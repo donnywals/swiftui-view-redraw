@@ -94,6 +94,15 @@ extension StateData {
             self.isActive = isActive
         }
     }
+    
+    /*
+     Uncommenting this extension will allow us to control how items are compared. By excluding the non-visible property from the comparison we can ensure SwiftUI doesn't re-evaluate bodies for the views that won't appear any different
+     */
+//    extension Item: Equatable {
+//        static func ==(lhs: Item, rhs: Item) -> Bool {
+//            return lhs.id == rhs.id && lhs.isActive == rhs.isActive
+//        }
+//    }
 }
 
 extension StateData {
