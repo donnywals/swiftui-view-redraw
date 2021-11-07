@@ -89,9 +89,15 @@ extension StateData {
         var isActive: Bool
         let id = UUID()
         var nonVisibleProperty = UUID()
+        let someString: String
         
         init(id: UUID = UUID(), isActive: Bool = false, nonVisibleProperty: UUID = UUID()) {
             self.isActive = isActive
+           self.someString = nonVisibleProperty.uuidString
+        }
+        
+        static func == (lhs: Item, rhs: Item) -> Bool {
+            return lhs.id == rhs.id && lhs.isActive == rhs.isActive
         }
     }
     

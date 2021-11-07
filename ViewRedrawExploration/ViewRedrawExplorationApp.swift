@@ -20,6 +20,14 @@ struct ViewRedrawExplorationApp: App {
                             Text("Granular data")
                         }
                     }
+                
+                SimpleListView()
+                    .tabItem({
+                        VStack {
+                            Image(systemName: "hands.sparkles")
+                            Text("Simplified data")
+                        }
+                    })
             }
         }
     }
