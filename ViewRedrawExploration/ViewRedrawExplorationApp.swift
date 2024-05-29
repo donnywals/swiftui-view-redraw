@@ -13,14 +13,6 @@ struct ViewRedrawExplorationApp: App {
                         }
                     }
                 
-                GranularDrivenView()
-                    .tabItem {
-                        VStack {
-                            Image(systemName: "hare")
-                            Text("Granular data")
-                        }
-                    }
-                
                 SimpleListView()
                     .tabItem({
                         VStack {
