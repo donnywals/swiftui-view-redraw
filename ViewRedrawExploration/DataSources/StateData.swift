@@ -58,7 +58,7 @@ extension StateData {
             setActiveStateForItem(at: oldIndex, to: false, in: &itemsCopy)
             setActiveStateForItem(at: activeIndex!, to: true, in: &itemsCopy)
         }
-        
+
         func reset() {
             guard case .loaded(let items) = state else {
                 return
@@ -75,7 +75,7 @@ extension StateData {
             
             activeIndex = nil
         }
-        
+
         private func setActiveStateForItem(at index: Int, to activeState: Bool, in items: inout [Item]) {
             var item = items.remove(at: index)
             item.isActive = activeState
@@ -89,26 +89,11 @@ extension StateData {
         var isActive: Bool
         let id = UUID()
         var nonVisibleProperty = UUID()
-        let someString: String
         
         init(id: UUID = UUID(), isActive: Bool = false, nonVisibleProperty: UUID = UUID()) {
             self.isActive = isActive
-           self.someString = nonVisibleProperty.uuidString
-        }
-        
-        static func == (lhs: Item, rhs: Item) -> Bool {
-            return lhs.id == rhs.id && lhs.isActive == rhs.isActive
         }
     }
-    
-    /*
-     Uncommenting this extension will allow us to control how items are compared. By excluding the non-visible property from the comparison we can ensure SwiftUI doesn't re-evaluate bodies for the views that won't appear any different
-     */
-//    extension Item: Equatable {
-//        static func ==(lhs: Item, rhs: Item) -> Bool {
-//            return lhs.id == rhs.id && lhs.isActive == rhs.isActive
-//        }
-//    }
 }
 
 extension StateData {
