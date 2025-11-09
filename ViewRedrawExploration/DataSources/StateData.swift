@@ -92,6 +92,7 @@ extension StateData {
         
         init(id: UUID = UUID(), isActive: Bool = false, nonVisibleProperty: UUID = UUID()) {
             self.isActive = isActive
+            self.someString = nonVisibleProperty.uuidString
         }
     }
 }

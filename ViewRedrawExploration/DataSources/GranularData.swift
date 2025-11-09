@@ -23,7 +23,7 @@ extension GranularData {
         
         
         func loadItems() {
-            self.state = .loaded((0..<1000).map { _ in
+            self.state = .loaded((0..<10000).map { _ in
                 return Item(isActive: false)
             })
         }

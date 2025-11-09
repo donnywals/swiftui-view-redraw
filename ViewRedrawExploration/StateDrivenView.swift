@@ -60,7 +60,15 @@ struct StateDrivenView: View {
 struct StateDrivenCell: View {
     let item: StateData.Item
     
+    // The property below is not part of SwiftUI's "diffing"
+//    var randomComputed: Int { Int.random(in: 0..<Int.max) }
+    
+    // But this one is
+//    var randomStored: Int = Int.random(in: 0..<Int.max)
+    
     var body: some View {
+        let _ = Self._printChanges()
+        
         VStack(alignment: .leading, spacing: 8) {
             HStack {
                 VStack(alignment: .leading) {

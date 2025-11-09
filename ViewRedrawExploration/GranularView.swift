@@ -6,21 +6,26 @@ let granularLogger = OSLog(subsystem: "com.donnywals.granulardriven", category: 
 struct GranularDrivenView: View {
     @StateObject var state = GranularData.DataSource()
     
-    var cellBuilder: (GranularData.Item) -> GranularDrivenCell = { item in
-        os_signpost(.begin, log: granularLogger, name: "cell creation")
-        let cell = GranularDrivenCell(item: item)
-        os_signpost(.end, log: granularLogger, name: "cell creation")
-        return cell
+    @ViewBuilder
+    func cellBuilder(_ item: GranularData.Item) -> some View {
+        GranularDrivenCell(item: item)
+ 
     }
     
     var body: some View {
         NavigationView {
-            ScrollView {
+            Group {
                 if case .loaded(let items) = state.state {
-                    LazyVStack {
-                        ForEach(items) { item in
-                            cellBuilder(item)
+                    List(items) { item in
+                        HStack {
+                            Text("Tap me")
+                            Spacer()
                         }
+                        .contentShape(Rectangle())
+                            .onTapGesture {
+                                print("tapped")
+                            }
+                            .border(Color.red)
                     }
                 } else {
                     ProgressView()
